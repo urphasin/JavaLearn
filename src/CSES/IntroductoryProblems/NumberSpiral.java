@@ -1,13 +1,17 @@
-package CSES.IntroductoryProblems;
+//package CSES.IntroductoryProblems;
 
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 import java.lang.Math;
 
 public class NumberSpiral {
-    public static int findNumberInInfiniteSpiral(int y, int x) {
-        int n = Math.max(y, x);
-        int start = (int)(Math.pow(n-1, 2) + 1);
-        int res = 0;
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+    public static void findNumberInInfiniteSpiral(long y, long x) throws IOException {
+        long n = Math.max(y, x);
+        long start =  (n - 1) * (n - 1) + 1;
+        long res = 0;
         if (n % 2 == 0) {
             if (y < x)
             {
@@ -22,18 +26,29 @@ public class NumberSpiral {
         }
         else {
             if (y < x) {
-
+                res = start + (n - 1) + (n - y);
+            }
+            else if (y > x) {
+                res = start + (x - 1);
+            }
+            else {
+                res = start + (n - 1);
             }
         }
-        return res;
+        bw.write(res + "\n");
     }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
+
+    public static void main(String[] args) throws IOException {
+        int t = Integer.parseInt(br.readLine());
+
         while (t-- > 0) {
-            int y = sc.nextInt();
-            int x = sc.nextInt();
-            System.out.println(findNumberInInfiniteSpiral(y, x));
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            long y = Long.parseLong(st.nextToken());
+            long x = Long.parseLong(st.nextToken());
+            findNumberInInfiniteSpiral(y, x);
         }
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
