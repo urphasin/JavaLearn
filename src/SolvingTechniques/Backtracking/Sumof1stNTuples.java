@@ -10,12 +10,12 @@ public class Sumof1stNTuples {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         System.out.println("Enter an N to get sum of first N numbers: ");
         int n = sc.nextInt();
 
-        System.out.println();
+        System.out.println(); // Space between input and output
 
-        f(n, 0);
         System.out.println(f(n,0));
 
         sc.close();
