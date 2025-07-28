@@ -5,8 +5,7 @@ import java.util.*;
 public class Sumof1stNTuples {
     public static int f(int i, int sum) {
         if (i < 1) return sum;
-        sum += i;
-        return f(i-1, sum);
+        return f(i-1, sum + i);
     }
 
     public static void main(String[] args) {
